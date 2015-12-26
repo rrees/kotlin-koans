@@ -1,6 +1,7 @@
 package i_introduction._12_Extensions_On_Collections
 
 import util.*
+import java.util.*
 
 fun todoTask12(): Nothing = TODO(
     """
@@ -15,8 +16,14 @@ fun todoTask12(): Nothing = TODO(
     documentation = doc12()
 )
 
-fun task12(): List<Int> {
-    todoTask12()
-    return arrayListOf(1, 5, 2)
+fun ArrayList<Int>.sortedDescending(): List<Int> {
+    Collections.sort(this, { x, y -> if (x > y) -1 else if (x < y) 1 else 0 })
+    return this
 }
+
+
+    fun task12(): List<Int> {
+        return arrayListOf(1, 5, 2).sortedDescending()
+    }
+
 
