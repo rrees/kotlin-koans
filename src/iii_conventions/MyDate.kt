@@ -50,3 +50,17 @@ operator fun DateRange.iterator(): Iterator<MyDate> {
         }
     }
 }
+
+operator fun MyDate.plus(interval: TimeInterval): MyDate {
+    return addTimeIntervals(interval, 1)
+}
+
+operator fun MyDate.plus(intervals: MultipleTimeIntervals): MyDate {
+    return addTimeIntervals(intervals.interval, intervals.quantity)
+}
+
+class MultipleTimeIntervals(val interval: TimeInterval, val quantity: Int)
+
+operator fun TimeInterval.times(multiplier: Int): MultipleTimeIntervals {
+    return MultipleTimeIntervals(this, multiplier)
+}
